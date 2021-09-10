@@ -16,5 +16,7 @@
 }
 
 .endInfo {
-  background-color: blue;
+  background-color: white;
+  color: red;
+  border-radius: 5px;
 }
