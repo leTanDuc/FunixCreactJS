@@ -21,10 +21,17 @@ const StaffList = () => {
                 <p>Phòng ban: {staff.department.name}</p>
                 <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
                 <p>Số ngày đã làm thêm: {staff.overTime}</p>
+                <button onClick={endInfo}>Thoát</button>
             </div>
             </>
         );
     };
+
+    const endInfo = () => {
+        setStaffs(
+            <h5>Chọn vào nhân viên để xem thêm thông tin</h5>
+        )
+    }
 
     return(
         <>
