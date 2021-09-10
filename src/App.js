@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/HeaderComponent';
+import StaffList from './components/StaffListComponent';
 
 function App() {
-  return (
-    <>
-    </>
+    return (
+      <>
+        <Header/>
+        <StaffList/>
+      </>
   );
-}
+};
 
 export default App;
