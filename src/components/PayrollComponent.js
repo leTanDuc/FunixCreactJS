@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 const Payroll = () => {
 
     const payrollStaffs = STAFFS.map((e) => {
-        
+        const basicSalary = 3000000;
+        const overTime = 200000;
+        const a = e.salaryScale;
+        const b = e.overTime;
+        const salary = ((a*basicSalary)+(b*overTime));
         return(
             <>
             <div className="col-md-4 col-sm-6">
@@ -15,7 +19,7 @@ const Payroll = () => {
                     <p>Hệ số lương: {e.salaryScale}</p>
                     <p>Số giờ làm thêm: {e.overTime}</p>
                     <div className="salary-box">
-                        <p>Lương: </p>
+                        <p>Lương: {salary}</p>
                     </div>
                 </div>
             </div>            
