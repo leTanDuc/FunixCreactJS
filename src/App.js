@@ -5,6 +5,7 @@ import Header from './components/HeaderComponent';
 import Navbar from './components/NavbarComponent';
 import StaffList from './components/StaffListComponent';
 import InfoStaff from './components/InfoComponent';
+import Department from './components/DepartmentComponent';
 import Footer from './components/FooterComponent';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={StaffList} />
         <Route path="/StaffList/:id" component={InfoStaff}/>
+        <Route path="/Department" component={Department} />
       </Switch>
       <Footer/>
       </>
