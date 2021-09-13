@@ -1,26 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
         <>
-            {/* <div className="container-fluid p-3 bg-primary text-white">
-                
-                <i className="fa fa-users" aria-hidden="true"> Nhân viên </i>
-                <i className="fa fa-id-card-o" aria-hidden="true"> Phòng Ban </i>
-                <i className="fa fa-money" aria-hidden="true"> Bảng lương </i>
-            </div> */}
-
-            <nav className="navbar navbar-expand-sm bg-primary navbar-dark">
+        <nav className="navbar navbar-expand-sm bg-light navbar-light">
             <ul className="navbar-nav">
-                
                 <li className="nav-item active">
-                <a className="nav-link" href="#"><i className="fa fa-users" aria-hidden="true"> Nhân viên </i></a>
+                    <Link to="/" className="navbar-brand logo">
+                        <img src="/assets/images/logo.png"/>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href="#"><i className="fa fa-id-card-o" aria-hidden="true"> Phòng Ban </i></a>
+                    <Link to="/" className="nav-link"><i className="fa fa-users" aria-hidden="true"> Nhân viên </i></Link>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href="#"><i className="fa fa-money" aria-hidden="true"> Bảng lương </i></a>
+                    <Link to="/Department" className="nav-link"><i className="fa fa-id-card-o" aria-hidden="true"> Phòng Ban </i></Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/Payroll" className="nav-link"><i className="fa fa-money" aria-hidden="true"> Bảng lương </i></Link>
                 </li>
             </ul>
             </nav>

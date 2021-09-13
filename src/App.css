@@ -1,22 +1,75 @@
+.logo {
+  width: 40px;
+}
+
+.logo img {
+    width: 100%;
+}
+
 .cell {
     border: 1px solid black;
     border-radius: 5px;
-    height: 50px;
     margin: 5px;
-    padding-left: 8px;
     line-height: 50px;
     cursor: pointer;
-  }
-  
-  .infoStaff {
+    text-align: center;
+    color: black;
+}
+
+.cell img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.info-staff {
+    margin: 5px;
+}
+
+.info-img img {
+    width: 100%;
+}
+
+.department {
     border: 1px solid black;
     border-radius: 5px;
-    margin: 10px 19px;
-    padding: 10px;
-  }
-  
-  .endInfo {
-    background-color: white;
-    color: red;
+    margin: 5px;
+}
+
+.department p {
+    padding-left: 24px;
+}
+
+.salary {
+    border: 1px solid black;
     border-radius: 5px;
-  }
+    margin: 5px;
+}
+
+.salary p {
+    padding-left: 24px;
+}
+
+.salary-box {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+    width: 75%;
+    height: 32px;
+    background-color: rgb(211, 211, 211);
+    border: 1px solid black;
+}
+
+.footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.icon-brand {
+    font-size: 38px;
+    text-align: center;
+}
+
+.copy-right {
+    text-align: center;
+}
