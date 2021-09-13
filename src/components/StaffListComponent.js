@@ -12,13 +12,16 @@ const StaffList = () => {
             </div>
             <div className="row">
                 {STAFFS.map(e => 
-                    <div
+                    <Link to={{
+                        pathname: `/StaffList/${e.id}`,
+                        state: e.id
+                    }}
                     key={e.id} className="col-lg-2 col-sm-4 col-6">
                         <div className="cell">
                             <img src={e.image}/>  
                             {e.name}
                         </div>
-                    </div>)}
+                    </Link>)}
             </div>
             <hr/>
         </div>
