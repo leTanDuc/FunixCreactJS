@@ -13,7 +13,7 @@ const Payroll = () => {
         return(
             <>
             <div key={e.id} className="col-lg-4 col-sm-6 col-12">
-                <div className="bg-light salary">
+                <div className="color-background-cell salary">
                 <Link to={{
                         pathname: `/StaffList/${e.id}`,
                         state: e.id

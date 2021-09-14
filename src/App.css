@@ -10,6 +10,10 @@
     background-color: rgb(142, 201, 253);
 }
 
+.color-background-cell {
+    background-color: rgb(242, 251, 255);
+}
+
 .cell {
     border: 1px solid black;
     border-radius: 5px;
