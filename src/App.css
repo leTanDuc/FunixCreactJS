@@ -7,7 +7,7 @@
 }
 
 .color-background {
-    background-color: rgb(196, 228, 255);
+    background-color: rgb(142, 201, 253);
 }
 
 .cell {
@@ -78,9 +78,7 @@
     text-align: center;
 }
 
-
-
-.fa-youtube-square {    
+.fa-youtube-square {   
     color: #e52d27;
 }
 .fa-google-plus-square {
