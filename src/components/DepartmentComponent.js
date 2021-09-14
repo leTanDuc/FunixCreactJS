@@ -13,7 +13,7 @@ const Department = () => {
             <hr/>
             <div className="row">
                 {DEPARTMENTS.map((e) => 
-                    <div className="col-md-4">
+                    <div key={e.id} className="col-lg-4 col-sm-6 col-12">
                         <div className="bg-light department">
                             <h2>{e.name}</h2>
                             <p>Số lượng nhân viên: {e.numberOfStaff}</p>

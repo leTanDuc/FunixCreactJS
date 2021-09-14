@@ -17,10 +17,10 @@ const InfoStaff = (props) => {
             </ul>
             <hr/>
             <div className="row info-staff">
-                <div className="col-3-xl col-md-4 col-12 info-img">
+                <div className="col-lg-3 col-sm-4 col-12 info-img">
                     <img src={staff.image}/>
                 </div>
-                <div className="col-9-xl col-md-8 col-12">
+                <div className="col-lg-9 col-sm-8 col-12">
                     <h4>Họ và tên: {staff.name}</h4>
                     <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
                     <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>

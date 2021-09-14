@@ -9,12 +9,17 @@ const Payroll = () => {
         const overTime = 200000;
         const a = e.salaryScale;
         const b = e.overTime;
-        const salary = ((a*basicSalary)+(b*overTime));
+        const salary = ((a*basicSalary)+(b*overTime)).toFixed();
         return(
             <>
-            <div className="col-md-4 col-sm-6">
+            <div key={e.id} className="col-lg-4 col-sm-6 col-12">
                 <div className="bg-light salary">
+                <Link to={{
+                        pathname: `/StaffList/${e.id}`,
+                        state: e.id
+                    }}>
                     <h3>{e.name}</h3>
+                </Link>
                     <p>Mã nhân viên: {e.id}</p>
                     <p>Hệ số lương: {e.salaryScale}</p>
                     <p>Số giờ làm thêm: {e.overTime}</p>
