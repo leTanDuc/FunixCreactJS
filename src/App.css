@@ -1,0 +1,99 @@
+.logo {
+  width: 40px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.color-background {
+    background-color: rgb(142, 201, 253);
+}
+
+.color-background-cell {
+    background-color: rgb(242, 251, 255);
+}
+
+.cell {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    line-height: 50px;
+    cursor: pointer;
+    text-align: center;
+    color: black;
+}
+
+.cell img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.info-staff {
+    margin: 5px;
+}
+
+.info-img img {
+    width: 100%;
+}
+
+.department {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.department p {
+    padding-left: 24px;
+}
+
+.salary {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.salary p {
+    padding-left: 24px;
+}
+
+.salary-box {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+    width: 75%;
+    height: 32px;
+    background-color: rgb(211, 211, 211);
+    border: 1px solid black;
+}
+
+.footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.icon-brand {
+    font-size: 38px;
+    text-align: center;
+}
+
+.copy-right {
+    text-align: center;
+}
+
+.fa-youtube-square {   
+    color: #e52d27;
+}
+.fa-google-plus-square {
+    color: #dd4b39;
+}
+.fa-facebook-square {
+    color: #3b5998;
+}
+.fa-linkedin-square {
+    color: #0976b4;
+}
+.fa-twitter-square {
+    color: #55acee;
+}
