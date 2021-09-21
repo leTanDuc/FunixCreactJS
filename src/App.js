@@ -1,13 +1,13 @@
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
-import Header from './components/HeaderComponent';
-import Navbar from './components/NavbarComponent';
-import StaffList from './components/StaffListComponent';
-import InfoStaff from './components/InfoComponent';
-import Department from './components/DepartmentComponent';
-import Payroll from './components/PayrollComponent';
-import Footer from './components/FooterComponent';
+import Header from './components/Header/index';
+import Navbar from './components/Navbar/index';
+import StaffList from './components/StaffList/index';
+import InfoStaff from './components/Info/index';
+import Department from './components/Department/index';
+import Payroll from './components/Payroll/index';
+import Footer from './components/Footer/index';
 
 function App() {
     return (

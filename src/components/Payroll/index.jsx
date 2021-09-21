@@ -1,8 +1,9 @@
 import React from "react";
-import { STAFFS } from "./staffs";
+import { STAFFS } from "../staffs";
 import { Link } from "react-router-dom";
+import "./Payroll.scss"
 
-const Payroll = () => {
+function Payroll() {
 
     const payrollStaffs = STAFFS.map((e) => {
         const basicSalary = 3000000;

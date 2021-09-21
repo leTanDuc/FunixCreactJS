@@ -1,6 +1,7 @@
 import React from "react";
+import "./Footer.scss";
 
-const Footer = () => {
+function Footer() {
     return (
         <>
         <div className="container-fluid color-background text-dark footer">

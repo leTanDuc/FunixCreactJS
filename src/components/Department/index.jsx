@@ -1,8 +1,9 @@
 import React from "react";
-import { DEPARTMENTS } from "./staffs";
+import { DEPARTMENTS } from "../staffs";
 import { Link } from "react-router-dom";
+import "./Department.scss"
 
-const Department = () => {
+function Department() {
     return(
         <>
         <div className="container-xl">

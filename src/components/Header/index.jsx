@@ -1,6 +1,7 @@
 import React from "react";
+import "./Header.scss"
 
-const Header = () => {
+function Header() {
     return (
         <>
             <div className="container-fluid p-3 bg-primary text-white">

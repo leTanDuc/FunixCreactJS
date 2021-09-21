@@ -1,9 +1,10 @@
 import React from "react";
-import { STAFFS } from "./staffs";
+import { STAFFS } from "../staffs";
 import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
+import "./Info.scss"
 
-const InfoStaff = (props) => {
+function InfoStaff(props) {
 
     let staffId = props.location.state ;
     let staff = STAFFS[staffId];
