@@ -11,13 +11,10 @@ StaffList.prototype = {
 };
 
 function StaffList() {
-
-    const [STAFFSList, setSTAFFSList] = useState(STAFFS);
-
     const [staffs, setStaffs] = useState(
         <>
         <div className="row">
-            {STAFFSList.map(e => 
+            {STAFFS.map(e => 
                 <Link to={{
                     pathname: `/StaffList/${e.id}`,
                     state: e.id
@@ -35,18 +32,16 @@ function StaffList() {
     //Add staff
     function handleClickAdd(newStaff) {
         const addNewStaff = {
-            id: STAFFSList.length,
+            id: STAFFS.length,
             ...newStaff,
         };
         
-        let newSTAFFS = [...STAFFSList];
-        newSTAFFS.push(addNewStaff);
-        
-        setSTAFFSList(newSTAFFS);
+        STAFFS[addNewStaff.id] = addNewStaff;
+
         setStaffs(
             <>
             <div className="row">
-                {newSTAFFS.map(e => 
+                {STAFFS.map(e => 
                     <Link to={{
                         pathname: `/StaffList/${e.id}`,
                         state: e.id
