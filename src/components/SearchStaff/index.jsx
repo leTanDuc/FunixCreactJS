@@ -23,12 +23,16 @@ function SearchStaff(props) {
     
     return (
         <>  
-        <div className="p-2">
-            <form className="form-inline">
-                <input className="form-control mr-sm-2" type="text" value={value} onChange={handleValueChange}/>
-                <button className="btn btn-primary" onClick={handleSubmit}>Search</button>
-            </form>
-        </div>
+        
+            
+                <div className="p-2 d-flex col justify-content-end">
+                    <input className="form-control mr-sm-2" type="text" value={value} onChange={handleValueChange}/>
+             
+                    <button className="btn btn-primary" onClick={handleSubmit}>Search</button>
+                </div>
+                
+        
+
         </>
     );
 }

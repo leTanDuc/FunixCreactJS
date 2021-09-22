@@ -36,6 +36,8 @@ function StaffList() {
             ...newStaff,
         };
         
+        console.log(addNewStaff);
+
         STAFFS[addNewStaff.id] = addNewStaff;
 
         setStaffs(
@@ -75,17 +77,19 @@ function StaffList() {
                     </Link>)}
             </div>
             </>
-        )
-    }
+        );
+    };
 
     return(
         <>
         <div className="container-xl">
             <h2>Nhân viên</h2>
-            <div className="d-flex mb-3 color-background">
-                <AddStaff onClick={handleClickAdd}/>
-                <SearchStaff onClick={handleClickSearch}/>
-            </div>
+            
+                <form className="form-inline d-flex mb-3 justify-content-between row ">
+                    <AddStaff onClick={handleClickAdd}/>
+                    <SearchStaff onClick={handleClickSearch}/>
+                </form>
+        
             <hr/>       
             {staffs}
             <hr/>
