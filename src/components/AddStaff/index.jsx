@@ -37,6 +37,7 @@ function AddStaff(props) {
     //Department staff
     const [ valuedepartment, setVluedepartment ] = useState(DEPARTMENTS[0]);
     function handleValueChangedepartment(e) {
+        setVluedepartment(e.target.value);
         let indexDepartment = DEPARTMENTS.findIndex(x => x.id === e.target.value);
         if (indexDepartment < 0) return;
         setVluedepartment(DEPARTMENTS[indexDepartment]);

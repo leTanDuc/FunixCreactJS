@@ -17,22 +17,16 @@ function SearchStaff(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let staffPindName = STAFFS.filter(x => new RegExp(value).test(x.name));
+        let staffPindName = STAFFS.filter(x => new RegExp(value.charAt(0).toUpperCase()).test(x.name));
         onClick(staffPindName);
     };
     
     return (
         <>  
-        
-            
-                <div className="p-2 d-flex col justify-content-end">
-                    <input className="form-control mr-sm-2" type="text" value={value} onChange={handleValueChange}/>
-             
-                    <button className="btn btn-primary" onClick={handleSubmit}>Search</button>
-                </div>
-                
-        
-
+        <div className="p-2 d-flex col justify-content-end">
+            <input className="form-control mr-sm-2" type="text" value={value} onChange={handleValueChange}/>
+            <button className="btn btn-primary" onClick={handleSubmit}>Search</button>
+        </div>
         </>
     );
 }

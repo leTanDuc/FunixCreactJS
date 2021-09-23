@@ -36,8 +36,6 @@ function StaffList() {
             ...newStaff,
         };
         
-        console.log(addNewStaff);
-
         STAFFS[addNewStaff.id] = addNewStaff;
 
         setStaffs(
@@ -61,6 +59,7 @@ function StaffList() {
 
     //Search staff
     function handleClickSearch(staffPindName) {
+        console.log(staffPindName)
         setStaffs(
             <>
             <div className="row">
