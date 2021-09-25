@@ -79,6 +79,10 @@ function AddStaff(props) {
         SetValueoverTime('');
     };
 
+    const submit = values => {
+        // print the form values to the console
+        console.log(values)
+    }
     return (
         <>
         <div className="p-2">
@@ -86,62 +90,62 @@ function AddStaff(props) {
                 Add
             </button>
         </div>
-         
-        {/* <!-- The Modal --> */}
-        <div className="modal fade" id="myModal">
+
+        {/*The Modal*/}
+        <form className="modal fade" id="myModal">
             <div className="modal-dialog">
                 <div className="modal-content">
                         
-                    {/* <!-- Modal Header --> */}
+                    {/*Modal Header*/}
                     <div className="modal-header">
                         <h4 className="modal-title">Thêm nhân viên</h4>
                         <button type="button" className="close" data-dismiss="modal">×</button>
                     </div>
                                         
-                    {/* <!-- Modal body --> */}
+                    {/*Modal body*/}
                     <div className="modal-body">
-                        <form className="d-flex justify-content-between mb-3">
+                        <div className="d-flex justify-content-between mb-3">
                             <label for="name">Tên </label>
                             <input className="input-label" type="text" id="name" value={valuename} onChange={handleValueChangename}/>
-                        </form>
-                        <form className="d-flex justify-content-between mb-3">
+                        </div>
+                        <div className="d-flex justify-content-between mb-3">
                             <label for="doB">Ngày sinh </label>
                             <input className="input-label" type="date" id="doB" value={valuedoB} onChange={handleValueChangedoB}/>
-                        </form>                    
-                        <form className="d-flex justify-content-between mb-3">
+                        </div>                    
+                        <div className="d-flex justify-content-between mb-3">
                             <label for="startDate">Ngày vào làm </label>
                             <input className="input-label" type="date" id="startDate" value={valuestartDate} onChange={handleValueChangestartDate}/>
-                        </form>
-                        <form className="d-flex justify-content-between mb-3">
+                        </div>
+                        <div className="d-flex justify-content-between mb-3">
                             <label for="department">Phòng ban </label>
                             <select className="input-label" id="department" value={valuedepartment} onChange={handleValueChangedepartment}>
                                 {DEPARTMENTS.map((e, index)=> 
                                     <option value={DEPARTMENTS[index].id} key={index}>{e.name}</option>
                                 )}
                             </select>
-                        </form>
-                        <form className="d-flex justify-content-between mb-3">
+                        </div>
+                        <div className="d-flex justify-content-between mb-3">
                             <label for="salaryScale">Hệ số lương </label>
                             <input className="input-label" type="number" id="salaryScale" value={valuesalaryScale} onChange={handleValueChangesalaryScale}/>
-                        </form>
-                        <form className="d-flex justify-content-between mb-3">
+                        </div>
+                        <div className="d-flex justify-content-between mb-3">
                             <label for="annualLeave">Số ngày nghỉ còn lại </label>
                             <input className="input-label" type="number" id="annualLeave" value={valueannualLeave} onChange={handleValueChangeannualLeave}/>
-                        </form>
-                        <form className="d-flex justify-content-between mb-3">
+                        </div>
+                        <div className="d-flex justify-content-between mb-3">
                             <label for="overTime">Số ngày đã làm thêm </label>
                             <input className="input-label" type="number" id="overTime" value={valueoverTime} onChange={handleValueChangeoverTime}/>
-                        </form>
+                        </div>
                     </div>
                                         
-                    {/* <!-- Modal footer --> */}
+                    {/*Modal footer*/}
                     <div className="modal-footer">
                         <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={handleSubmit}>Thêm</button>
                     </div>
                             
                 </div>
             </div>
-        </div>
+        </form>
         </>
     );
 }
