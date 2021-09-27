@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./StaffList.scss";
 import SearchStaff from "../SearchStaff";
 import AddStaff from "../AddStaff";
 
 function StaffList(props) {
-
   return (
     <>
       <div className="container-xl">

@@ -19,7 +19,8 @@ function App() {
       id: staffs.length,
       ...add,
     };
-    const newSTAFFS = [...STAFFS, ...[addNewStaff]];
+    const newSTAFFS = [...staffs, ...[addNewStaff]]
+    STAFFS[addNewStaff.id] = addNewStaff
     setStaffs(
       newSTAFFS
     )
@@ -28,7 +29,7 @@ function App() {
   //Search staff
   function handleClickSearch(search) {
     setStaffs(
-      staffs.filter((x) => x.name.toLowerCase().match(search.toLowerCase()))
+      STAFFS.filter((x) => x.name.toLowerCase().match(search.toLowerCase()))
     );
   }
 
