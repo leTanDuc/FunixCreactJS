@@ -1,100 +1,66 @@
 import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { STAFFS } from "../staffs";
 import { Link } from "react-router-dom";
 import "./StaffList.scss";
 import SearchStaff from "../SearchStaff";
 import AddStaff from "../AddStaff";
+import InfoStaff from "../Info";
 
-StaffList.prototype = {
-    onClick: PropTypes.func,
-};
+function StaffList(props) {
+  const [staffs, setStaffs] = useState(STAFFS);
 
-function StaffList() {
-    const [staffs, setStaffs] = useState(
-        <>
-        <div className="row">
-            {STAFFS.map(e => 
-                <Link to={{
-                    pathname: `/StaffList/${e.id}`,
-                    state: e.id
-                }}
-                key={e.id} className="col-lg-2 col-sm-4 col-6">
-                <div className="cell">
-                    <img src={e.image}/>  
-                    {e.name}
-                </div>
-                </Link>)}
-        </div>            
-        </>
+  //Add staff
+  function handleClickAdd(add) {
+    const addNewStaff = {
+      id: STAFFS.length,
+      ...add,
+    };
+    const newSTAFFS = [...STAFFS, addNewStaff]
+    // console.log(newSTAFFS)
+    setStaffs(
+      newSTAFFS
+      // newSTAFFS
+    )
+  }
+
+  //Search staff
+  function handleClickSearch(search) {
+    setStaffs(
+      STAFFS.filter((x) => x.name.toLowerCase().match(search.toLowerCase()))
     );
+  }
 
-    //Add staff
-    function handleClickAdd(newStaff) {
-        const addNewStaff = {
-            id: STAFFS.length,
-            ...newStaff,
-        };
-        
-        STAFFS[addNewStaff.id] = addNewStaff;
-
-        setStaffs(
-            <>
-            <div className="row">
-                {STAFFS.map(e => 
-                    <Link to={{
-                        pathname: `/StaffList/${e.id}`,
-                        state: e.id
-                    }}
-                    key={e.id} className="col-lg-2 col-sm-4 col-6">
-                    <div className="cell">
-                        <img src={e.image}/>  
-                        {e.name}
-                    </div>
-                    </Link>)}
-            </div>            
-            </>
-        );
-    };
-
-    //Search staff
-    function handleClickSearch(staffPindName) {
-        console.log(staffPindName)
-        setStaffs(
-            <>
-            <div className="row">
-                {staffPindName.map(e => 
-                    <Link to={{
-                        pathname: `/StaffList/${e.id}`,
-                        state: e.id
-                    }}
-                    key={e.id} className="col-lg-2 col-sm-4 col-6">
-                    <div className="cell">
-                        <img src={e.image}/>  
-                        {e.name}
-                    </div>
-                    </Link>)}
-            </div>
-            </>
-        );
-    };
-
-    return(
-        <>
-        <div className="container-xl">
-            <h2>Nhân viên</h2>
-            
-                <form className="form-inline d-flex mb-3 justify-content-between row ">
-                    <AddStaff onClick={handleClickAdd}/>
-                    <SearchStaff onClick={handleClickSearch}/>
-                </form>
-        
-            <hr/>       
-            {staffs}
-            <hr/>
+  return (
+    <>
+      <div className="container-xl">
+        <h2>Nhân viên</h2>
+        <div className="d-flex mb-3 justify-content-between row ">
+          <AddStaff onClick={handleClickAdd} />
+          <SearchStaff onClick={handleClickSearch} />
         </div>
-        </>
-    );
-};
+        <hr />
+        <div className="row">
+          {staffs.map((e) => (
+            <Link
+              to={{
+                pathname: `/StaffList/${e.id}`,
+                state: e.id,
+              }}
+              key={e.id}
+              className="col-lg-2 col-sm-4 col-6"
+            >
+              <div className="cell">
+                <img src={e.image} />
+                {e.name}
+              </div>
+            </Link>
+          ))}
+        </div>
+        <hr />
+      </div>
+    </>
+  );
+}
 
 export default StaffList;

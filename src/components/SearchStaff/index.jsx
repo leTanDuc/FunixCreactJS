@@ -1,34 +1,29 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { STAFFS } from "../staffs";
+import React, { useRef } from "react";
+import PropTypes from "prop-types";
+import { Col } from "reactstrap";
 
 SearchStaff.propTypes = {
-    onClick: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 function SearchStaff(props) {
-    const { onClick } = props;
+  const { onClick } = props;
+  const inputRef = useRef(null);
 
-    const [value, setValue] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const value = inputRef.current.value;
+    onClick(value);
+  };
 
-    function handleValueChange(e) {
-        setValue(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        let staffPindName = STAFFS.filter(x => new RegExp(value.charAt(0).toUpperCase()).test(x.name));
-        onClick(staffPindName);
-    };
-    
-    return (
-        <>  
-        <div className="p-2 d-flex col justify-content-end">
-            <input className="form-control mr-sm-2" type="text" value={value} onChange={handleValueChange}/>
-            <button className="btn btn-primary" onClick={handleSubmit}>Search</button>
-        </div>
-        </>
-    );
+  return (
+    <Col className="p-2 d-flex" sm={6}>
+      <input className="form-control mr-sm-2" type="text" ref={inputRef} />
+      <button className="btn btn-primary" onClick={handleSubmit}>
+        Search
+      </button>
+    </Col>
+  );
 }
 
 export default SearchStaff;

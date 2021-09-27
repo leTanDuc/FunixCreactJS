@@ -1,153 +1,251 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { DEPARTMENTS } from '../staffs';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { DEPARTMENTS } from "../staffs";
 import "./AddStaff.scss";
+import {
+  Modal,
+  ModalBody,
+  ModalHeader,
+  Form,
+  FormGroup,
+  Label,
+  Col,
+  Input,
+  FormFeedback,
+  Button,
+} from "reactstrap";
 
 AddStaff.propTypes = {
-    onClick: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 function AddStaff(props) {
-    const { onClick } = props;
+  const { onClick } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
 
-    //Name staff
-    const [ valuename, SetValuename ] = useState("");
-    function handleValueChangename(e) {
-        SetValuename(e.target.value);    
-    };
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
 
-    //dob staff
-    const [ valuedoB, SetValuedoB ] = useState("");
-    function handleValueChangedoB(e) {
-        SetValuedoB(e.target.value);
-    };
-
-    //SalaryScale staff
-    const [ valuesalaryScale, SetValuesalaryScale ] = useState("");
-    function handleValueChangesalaryScale(e) {
-        SetValuesalaryScale(e.target.value);
-    };
-
-    //StartDate staff
-    const [ valuestartDate, SetValuestartDate ] = useState("");
-    function handleValueChangestartDate(e) {
-        SetValuestartDate(e.target.value);
-    };
-
-    //Department staff
-    const [ valuedepartment, setVluedepartment ] = useState(DEPARTMENTS[0]);
-    function handleValueChangedepartment(e) {
-        setVluedepartment(e.target.value);
-        let indexDepartment = DEPARTMENTS.findIndex(x => x.id === e.target.value);
-        if (indexDepartment < 0) return;
-        setVluedepartment(DEPARTMENTS[indexDepartment]);
-    };
-  
-    //AnnualLeave staff
-    const [ valueannualLeave, SetValueannualLeave ] = useState("");
-    function handleValueChangeannualLeave(e) {
-        SetValueannualLeave(e.target.value);
-    };
-
-    //OverTime staff
-    const [ valueoverTime, SetValueoverTime ] = useState("");
-    function handleValueChangeoverTime(e) {
-        SetValueoverTime(e.target.value);
-    };
-
-    function handleSubmit(e) {
-        e.preventDefault();
-
-        const newStaff = {
-            name: valuename,
-            doB: valuedoB,
-            salaryScale: valuesalaryScale,
-            startDate: valuestartDate,
-            department: valuedepartment,
-            annualLeave: valueannualLeave,
-            overTime: valueoverTime,
-            image: '/assets/images/alberto.png',
-        };
-        
-        onClick(newStaff);
-
-        SetValuename('');
-        SetValuedoB('');
-        SetValuesalaryScale('');
-        SetValuestartDate('');
-        SetValueannualLeave('');
-        SetValueoverTime('');
-    };
-
-    const submit = values => {
-        // print the form values to the console
-        console.log(values)
+  //Name staff
+  const [valuename, SetValuename] = useState("");
+  const [errName, setErrName] = useState("Yêu cầu nhập");
+  function handleValueChangename(e) {
+    if (!e.target.value) {
+      setErrName("Yêu cầu nhập");
+    } else if (e.target.value.length < 2) {
+      setErrName("Nhập nhiều hơn 2 ký tự");
+    } else {
+      setErrName("");
     }
-    return (
-        <>
-        <div className="p-2">
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Add
-            </button>
-        </div>
+    SetValuename(e.target.value);
+  }
 
-        {/*The Modal*/}
-        <form className="modal fade" id="myModal">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                        
-                    {/*Modal Header*/}
-                    <div className="modal-header">
-                        <h4 className="modal-title">Thêm nhân viên</h4>
-                        <button type="button" className="close" data-dismiss="modal">×</button>
-                    </div>
-                                        
-                    {/*Modal body*/}
-                    <div className="modal-body">
-                        <div className="d-flex justify-content-between mb-3">
-                            <label for="name">Tên </label>
-                            <input className="input-label" type="text" id="name" value={valuename} onChange={handleValueChangename}/>
-                        </div>
-                        <div className="d-flex justify-content-between mb-3">
-                            <label for="doB">Ngày sinh </label>
-                            <input className="input-label" type="date" id="doB" value={valuedoB} onChange={handleValueChangedoB}/>
-                        </div>                    
-                        <div className="d-flex justify-content-between mb-3">
-                            <label for="startDate">Ngày vào làm </label>
-                            <input className="input-label" type="date" id="startDate" value={valuestartDate} onChange={handleValueChangestartDate}/>
-                        </div>
-                        <div className="d-flex justify-content-between mb-3">
-                            <label for="department">Phòng ban </label>
-                            <select className="input-label" id="department" value={valuedepartment} onChange={handleValueChangedepartment}>
-                                {DEPARTMENTS.map((e, index)=> 
-                                    <option value={DEPARTMENTS[index].id} key={index}>{e.name}</option>
-                                )}
-                            </select>
-                        </div>
-                        <div className="d-flex justify-content-between mb-3">
-                            <label for="salaryScale">Hệ số lương </label>
-                            <input className="input-label" type="number" id="salaryScale" value={valuesalaryScale} onChange={handleValueChangesalaryScale}/>
-                        </div>
-                        <div className="d-flex justify-content-between mb-3">
-                            <label for="annualLeave">Số ngày nghỉ còn lại </label>
-                            <input className="input-label" type="number" id="annualLeave" value={valueannualLeave} onChange={handleValueChangeannualLeave}/>
-                        </div>
-                        <div className="d-flex justify-content-between mb-3">
-                            <label for="overTime">Số ngày đã làm thêm </label>
-                            <input className="input-label" type="number" id="overTime" value={valueoverTime} onChange={handleValueChangeoverTime}/>
-                        </div>
-                    </div>
-                                        
-                    {/*Modal footer*/}
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={handleSubmit}>Thêm</button>
-                    </div>
-                            
-                </div>
-            </div>
-        </form>
-        </>
-    );
+  //dob staff
+  const [valuedoB, SetValuedoB] = useState("");
+  const [errDoB, setErrDoB] = useState("Yêu cầu nhập");
+  function handleValueChangedoB(e) {
+    if (!e.target.value) {
+      setErrDoB("Yêu cầu nhập");
+    } else {
+      setErrDoB("");
+    }
+    SetValuedoB(e.target.value);
+  }
+
+  //StartDate staff
+  const [valuestartDate, SetValuestartDate] = useState("");
+  const [errStartDate, setErrStartDate] = useState("Yêu cầu nhập");
+  function handleValueChangestartDate(e) {
+    if (!e.target.value) {
+      setErrStartDate("Yêu cầu nhập");
+    } else {
+      setErrStartDate("");
+    }
+    SetValuestartDate(e.target.value);
+  }
+
+  //SalaryScale staff
+  const [valuesalaryScale, SetValuesalaryScale] = useState("");
+  const [errSalary, setErrSalary] = useState("Yêu cầu nhập");
+  function handleValueChangesalaryScale(e) {
+    if (!e.target.value) {
+      setErrSalary("Yêu cầu nhập");
+    } else if (+e.target.value < 1) {
+      setErrSalary("Yêu cầu nhập số trong khoảng 1-3");
+    } else if (+e.target.value > 3) {
+      setErrSalary("Yêu cầu nhập số trong khoảng 1-3");
+    } else {
+      setErrSalary("");
+    }
+    SetValuesalaryScale(e.target.value);
+  }
+
+  //Department staff
+  const [valuedepartment, setVluedepartment] = useState(DEPARTMENTS[0].id);
+  function handleValueChangedepartment(e) {
+    setVluedepartment(e.target.value);
+  }
+
+  //AnnualLeave staff
+  const [valueannualLeave, SetValueannualLeave] = useState("");
+  function handleValueChangeannualLeave(e) {
+    SetValueannualLeave(e.target.value);
+  }
+
+  //OverTime staff
+  const [valueoverTime, SetValueoverTime] = useState("");
+  function handleValueChangeoverTime(e) {
+    SetValueoverTime(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsSubmit(true);
+    if (errName || errDoB || errStartDate || errSalary) {
+      return;
+    }
+    const selectDepart = DEPARTMENTS.find((x) => x.id === valuedepartment);
+    const newStaff = {
+      name: valuename,
+      doB: valuedoB,
+      salaryScale: valuesalaryScale,
+      startDate: valuestartDate,
+      department: selectDepart,
+      annualLeave: valueannualLeave,
+      overTime: valueoverTime,
+      image: "/assets/images/alberto.png",
+    };
+
+    onClick(newStaff);
+
+    onClick(newStaff);
+    SetValuename("");
+    SetValuedoB("");
+    SetValuesalaryScale("");
+    SetValuestartDate("");
+    SetValueannualLeave("");
+    SetValueoverTime("");
+  }
+
+  return (
+    <Col sm={6}>
+      <div className="p-2">
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => setIsOpen(true)}
+        >
+          Add
+        </button>
+      </div>
+
+      {/*The Modal*/}
+      <Modal isOpen={isOpen} toggle={toggle}>
+        {/*Modal Header*/}
+        <ModalHeader toggle={toggle}>Thêm nhân viên</ModalHeader>
+        {/*Modal body*/}
+        <ModalBody>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup className="mt-3" row>
+              <Label sm={3}>Tên</Label>
+              <Col sm={9}>
+                <Input
+                  type="text"
+                  value={valuename}
+                  onChange={handleValueChangename}
+                  valid={!errName && isSubmit}
+                  invalid={errName && isSubmit}
+                ></Input>
+                <FormFeedback>{errName}</FormFeedback>
+              </Col>
+            </FormGroup>
+            <FormGroup className="mt-3" row>
+              <Label sm={3}>Ngày sinh</Label>
+              <Col sm={9}>
+                <Input
+                  type="date"
+                  value={valuedoB}
+                  onChange={handleValueChangedoB}
+                  valid={!errDoB && isSubmit}
+                  invalid={errDoB && isSubmit}
+                ></Input>
+                <FormFeedback>{errDoB}</FormFeedback>
+              </Col>
+            </FormGroup>
+            <FormGroup className="mt-3" row>
+              <Label sm={3}>Ngày vào làm</Label>
+              <Col sm={9}>
+                <Input
+                  type="date"
+                  value={valuestartDate}
+                  onChange={handleValueChangestartDate}
+                  valid={!errStartDate && isSubmit}
+                  invalid={errStartDate && isSubmit}
+                ></Input>
+                <FormFeedback>{errStartDate}</FormFeedback>
+              </Col>
+            </FormGroup>
+            <FormGroup className="mt-3" row>
+              <Label sm={3}>Phòng ban</Label>
+              <Col sm={9}>
+                <select
+                  className="form-control"
+                  value={valuedepartment}
+                  onChange={handleValueChangedepartment}
+                >
+                  {DEPARTMENTS.map((e, index) => (
+                    <option value={DEPARTMENTS[index].id} key={index}>
+                      {e.name}
+                    </option>
+                  ))}
+                </select>
+              </Col>
+            </FormGroup>
+            <FormGroup className="mt-3" row>
+              <Label sm={3}>Hệ số lương</Label>
+              <Col sm={9}>
+                <Input
+                  type="number"
+                  value={valuesalaryScale}
+                  onChange={handleValueChangesalaryScale}
+                  min={1}
+                  max={3}
+                  valid={!errSalary && isSubmit}
+                  invalid={errSalary && isSubmit}
+                ></Input>
+                <FormFeedback>{errSalary}</FormFeedback>
+              </Col>
+            </FormGroup>
+            <FormGroup className="mt-3" row>
+              <Label sm={3}>Số ngày nghỉ còn lại</Label>
+              <Col sm={9}>
+                <Input
+                  type="number"
+                  value={valueannualLeave}
+                  onChange={handleValueChangeannualLeave}
+                ></Input>
+              </Col>
+            </FormGroup>
+            <FormGroup className="mt-3" row>
+              <Label sm={3}>Số ngày đã làm thêm</Label>
+              <Col sm={9}>
+                <Input
+                  type="number"
+                  value={valueoverTime}
+                  onChange={handleValueChangeoverTime}
+                ></Input>
+              </Col>
+            </FormGroup>
+            <Button type="submit" className="mt-3">
+              Thêm
+            </Button>
+          </Form>
+        </ModalBody>
+      </Modal>
+    </Col>
+  );
 }
 
 export default AddStaff;
