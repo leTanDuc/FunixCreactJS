@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { DEPARTMENTS } from "../staffs";
 import "./AddStaff.scss";
 import {
@@ -15,12 +14,8 @@ import {
   Button,
 } from "reactstrap";
 
-AddStaff.propTypes = {
-  onClick: PropTypes.func,
-};
-
 function AddStaff(props) {
-  const { onClick } = props;
+  const { onSubmit } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -72,9 +67,9 @@ function AddStaff(props) {
   function handleValueChangesalaryScale(e) {
     if (!e.target.value) {
       setErrSalary("Yêu cầu nhập");
-    } else if (+e.target.value < 1) {
+    } else if (+e.target.value < 1.0) {
       setErrSalary("Yêu cầu nhập số trong khoảng 1-3");
-    } else if (+e.target.value > 3) {
+    } else if (+e.target.value > 3.0) {
       setErrSalary("Yêu cầu nhập số trong khoảng 1-3");
     } else {
       setErrSalary("");
@@ -118,9 +113,11 @@ function AddStaff(props) {
       image: "/assets/images/alberto.png",
     };
 
-    onClick(newStaff);
+    onSubmit(newStaff);
 
-    onClick(newStaff);
+    setIsSubmit(false);
+    toggle();
+
     SetValuename("");
     SetValuedoB("");
     SetValuesalaryScale("");
@@ -210,8 +207,6 @@ function AddStaff(props) {
                   type="number"
                   value={valuesalaryScale}
                   onChange={handleValueChangesalaryScale}
-                  min={1}
-                  max={3}
                   valid={!errSalary && isSubmit}
                   invalid={errSalary && isSubmit}
                 ></Input>

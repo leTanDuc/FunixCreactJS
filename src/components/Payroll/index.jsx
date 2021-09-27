@@ -3,14 +3,15 @@ import { STAFFS } from "../staffs";
 import { Link } from "react-router-dom";
 import "./Payroll.scss"
 
-function Payroll() {
+function Payroll(props) {
 
-    const payrollStaffs = STAFFS.map((e) => {
+    const payrollStaffs = props.STAFFSList.map((e) => {
         const basicSalary = 3000000;
         const overTime = 200000;
         const a = e.salaryScale;
         const b = e.overTime;
         const salary = ((a*basicSalary)+(b*overTime)).toFixed();
+        
         return(
             <>
             <div key={e.id} className="col-lg-4 col-sm-6 col-12">

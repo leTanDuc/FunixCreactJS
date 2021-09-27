@@ -1,10 +1,5 @@
 import React, { useRef } from "react";
-import PropTypes from "prop-types";
 import { Col } from "reactstrap";
-
-SearchStaff.propTypes = {
-  onClick: PropTypes.func,
-};
 
 function SearchStaff(props) {
   const { onClick } = props;
@@ -12,7 +7,7 @@ function SearchStaff(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const value = inputRef.current.value;
+    let value = inputRef.current.value;
     onClick(value);
   };
 
