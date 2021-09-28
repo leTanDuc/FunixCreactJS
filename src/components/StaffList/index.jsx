@@ -22,6 +22,7 @@ function StaffList(props) {
                 state: e.id,
               }}
               key={e.id}
+              style ={{textDecoration: "none"}}
               className="col-lg-2 col-sm-4 col-6"
             >
               <div className="cell">

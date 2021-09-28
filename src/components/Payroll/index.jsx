@@ -19,7 +19,9 @@ function Payroll(props) {
                 <Link to={{
                         pathname: `/StaffList/${e.id}`,
                         state: e.id
-                    }}>
+                    }}
+                    style ={{textDecoration: "none"}}
+                    >
                     <h3>{e.name}</h3>
                 </Link>
                     <p>Mã nhân viên: {e.id}</p>
