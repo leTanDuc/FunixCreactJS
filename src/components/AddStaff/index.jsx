@@ -26,73 +26,75 @@ function AddStaff(props) {
   //Name staff
   const [valuename, SetValuename] = useState("");
   const [errName, setErrName] = useState("Yêu cầu nhập");
-  function handleValueChangename(e) {
-    if (!e.target.value) {
+  function handleValueChangename(value) {
+    if (!value) {
       setErrName("Yêu cầu nhập");
-    } else if (e.target.value.length < 2) {
+    } else if (value.length < 2) {
       setErrName("Nhập nhiều hơn 2 ký tự");
+    } else if (value.length > 30) {
+      setErrName("Yêu cầu ít hơn 30 ký tự");
     } else {
       setErrName("");
     }
-    SetValuename(e.target.value);
+    SetValuename(value);
   }
 
   //dob staff
   const [valuedoB, SetValuedoB] = useState("");
   const [errDoB, setErrDoB] = useState("Yêu cầu nhập");
-  function handleValueChangedoB(e) {
-    if (!e.target.value) {
+  function handleValueChangedoB(value) {
+    if (!value) {
       setErrDoB("Yêu cầu nhập");
     } else {
       setErrDoB("");
     }
-    SetValuedoB(e.target.value);
+    SetValuedoB(value);
   }
 
   //StartDate staff
   const [valuestartDate, SetValuestartDate] = useState("");
   const [errStartDate, setErrStartDate] = useState("Yêu cầu nhập");
-  function handleValueChangestartDate(e) {
-    if (!e.target.value) {
+  function handleValueChangestartDate(value) {
+    if (!value) {
       setErrStartDate("Yêu cầu nhập");
     } else {
       setErrStartDate("");
     }
-    SetValuestartDate(e.target.value);
+    SetValuestartDate(value);
+  }
+
+  //Department staff
+  const [valuedepartment, setVluedepartment] = useState(DEPARTMENTS[0].id);
+  function handleValueChangedepartment(value) {
+    setVluedepartment(value);
   }
 
   //SalaryScale staff
   const [valuesalaryScale, SetValuesalaryScale] = useState("");
   const [errSalary, setErrSalary] = useState("Yêu cầu nhập");
-  function handleValueChangesalaryScale(e) {
-    if (!e.target.value) {
+  function handleValueChangesalaryScale(value) {
+    if (!value) {
       setErrSalary("Yêu cầu nhập");
-    } else if (+e.target.value < 1.0) {
+    } else if (+value < 1) {
       setErrSalary("Yêu cầu nhập số trong khoảng 1-3");
-    } else if (+e.target.value > 3.0) {
+    } else if (+value > 3) {
       setErrSalary("Yêu cầu nhập số trong khoảng 1-3");
     } else {
       setErrSalary("");
     }
-    SetValuesalaryScale(e.target.value);
-  }
-
-  //Department staff
-  const [valuedepartment, setVluedepartment] = useState(DEPARTMENTS[0].id);
-  function handleValueChangedepartment(e) {
-    setVluedepartment(e.target.value);
+    SetValuesalaryScale(value);
   }
 
   //AnnualLeave staff
   const [valueannualLeave, SetValueannualLeave] = useState("");
-  function handleValueChangeannualLeave(e) {
-    SetValueannualLeave(e.target.value);
+  function handleValueChangeannualLeave(value) {
+    SetValueannualLeave(value);
   }
 
   //OverTime staff
   const [valueoverTime, SetValueoverTime] = useState("");
-  function handleValueChangeoverTime(e) {
-    SetValueoverTime(e.target.value);
+  function handleValueChangeoverTime(value) {
+    SetValueoverTime(value);
   }
 
   function handleSubmit(e) {
@@ -118,12 +120,19 @@ function AddStaff(props) {
     setIsSubmit(false);
     toggle();
 
-    SetValuename("");
-    SetValuedoB("");
-    SetValuesalaryScale("");
-    SetValuestartDate("");
-    SetValueannualLeave("");
-    SetValueoverTime("");
+    handleValueChangename("");
+    handleValueChangedoB("");
+    handleValueChangesalaryScale("");
+    handleValueChangestartDate("");
+    handleValueChangeannualLeave("");
+    handleValueChangeoverTime("");
+
+    // SetValuename("");
+    // SetValuedoB("");
+    // SetValuesalaryScale("");
+    // SetValuestartDate("");
+    // SetValueannualLeave("");
+    // SetValueoverTime("");
   }
 
   return (
@@ -151,7 +160,7 @@ function AddStaff(props) {
                 <Input
                   type="text"
                   value={valuename}
-                  onChange={handleValueChangename}
+                  onChange={(e) => handleValueChangename(e.target.value)}
                   valid={!errName && isSubmit}
                   invalid={errName && isSubmit}
                 ></Input>
@@ -164,7 +173,7 @@ function AddStaff(props) {
                 <Input
                   type="date"
                   value={valuedoB}
-                  onChange={handleValueChangedoB}
+                  onChange={(e) => handleValueChangedoB(e.target.value)}
                   valid={!errDoB && isSubmit}
                   invalid={errDoB && isSubmit}
                 ></Input>
@@ -177,7 +186,7 @@ function AddStaff(props) {
                 <Input
                   type="date"
                   value={valuestartDate}
-                  onChange={handleValueChangestartDate}
+                  onChange={(e) => handleValueChangestartDate(e.target.value)}
                   valid={!errStartDate && isSubmit}
                   invalid={errStartDate && isSubmit}
                 ></Input>
@@ -190,7 +199,7 @@ function AddStaff(props) {
                 <select
                   className="form-control"
                   value={valuedepartment}
-                  onChange={handleValueChangedepartment}
+                  onChange={(e) => handleValueChangedepartment(e.target.value)}
                 >
                   {DEPARTMENTS.map((e, index) => (
                     <option value={DEPARTMENTS[index].id} key={index}>
@@ -206,7 +215,7 @@ function AddStaff(props) {
                 <Input
                   type="number"
                   value={valuesalaryScale}
-                  onChange={handleValueChangesalaryScale}
+                  onChange={(e) => handleValueChangesalaryScale(e.target.value)}
                   valid={!errSalary && isSubmit}
                   invalid={errSalary && isSubmit}
                 ></Input>
@@ -219,7 +228,7 @@ function AddStaff(props) {
                 <Input
                   type="number"
                   value={valueannualLeave}
-                  onChange={handleValueChangeannualLeave}
+                  onChange={(e) => handleValueChangeannualLeave(e.target.value)}
                 ></Input>
               </Col>
             </FormGroup>
@@ -229,11 +238,11 @@ function AddStaff(props) {
                 <Input
                   type="number"
                   value={valueoverTime}
-                  onChange={handleValueChangeoverTime}
+                  onChange={(e) => handleValueChangeoverTime(e.target.value)}
                 ></Input>
               </Col>
             </FormGroup>
-            <Button type="submit" className="mt-3">
+            <Button type="submit" className="mt-3 ">
               Thêm
             </Button>
           </Form>
